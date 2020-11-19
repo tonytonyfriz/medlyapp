@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,12 @@
 		01ECFE6F25664F8600A7FCA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01ECFE6D25664F8600A7FCA4 /* Main.storyboard */; };
 		01ECFE7125664F8B00A7FCA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01ECFE7025664F8B00A7FCA4 /* Assets.xcassets */; };
 		01ECFE7425664F8B00A7FCA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01ECFE7225664F8B00A7FCA4 /* LaunchScreen.storyboard */; };
+		01ECFE7D256650EE00A7FCA4 /* CountriesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ECFE7C256650EE00A7FCA4 /* CountriesLoader.swift */; };
+		01ECFE82256651BC00A7FCA4 /* URLs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01ECFE81256651BC00A7FCA4 /* URLs.plist */; };
+		01ECFE852566529700A7FCA4 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ECFE842566529700A7FCA4 /* Country.swift */; };
+		01ECFE8A2566571600A7FCA4 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ECFE892566571600A7FCA4 /* CountryTableViewCell.swift */; };
+		01ECFEA2256661D600A7FCA4 /* placeholder-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 01ECFEA1256661D600A7FCA4 /* placeholder-image.png */; };
+		462A109E1875251B860E466B /* Pods_MedlyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F8D4989B8E4F1D689AF646 /* Pods_MedlyApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,14 @@
 		01ECFE7025664F8B00A7FCA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01ECFE7325664F8B00A7FCA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01ECFE7525664F8B00A7FCA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01ECFE7C256650EE00A7FCA4 /* CountriesLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesLoader.swift; sourceTree = "<group>"; };
+		01ECFE81256651BC00A7FCA4 /* URLs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = URLs.plist; sourceTree = "<group>"; };
+		01ECFE842566529700A7FCA4 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		01ECFE892566571600A7FCA4 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		01ECFEA1256661D600A7FCA4 /* placeholder-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder-image.png"; sourceTree = "<group>"; };
+		3054C456C3C960CD214E00E4 /* Pods-MedlyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedlyApp.debug.xcconfig"; path = "Target Support Files/Pods-MedlyApp/Pods-MedlyApp.debug.xcconfig"; sourceTree = "<group>"; };
+		A3F8D4989B8E4F1D689AF646 /* Pods_MedlyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedlyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6A8F51327C026255AF104F6 /* Pods-MedlyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedlyApp.release.xcconfig"; path = "Target Support Files/Pods-MedlyApp/Pods-MedlyApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				462A109E1875251B860E466B /* Pods_MedlyApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +57,8 @@
 			children = (
 				01ECFE6625664F8600A7FCA4 /* MedlyApp */,
 				01ECFE6525664F8600A7FCA4 /* Products */,
+				4BE2999D302B4121574AB214 /* Pods */,
+				E7927D496FEA48A8F997D0D8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +76,58 @@
 				01ECFE6725664F8600A7FCA4 /* AppDelegate.swift */,
 				01ECFE6925664F8600A7FCA4 /* SceneDelegate.swift */,
 				01ECFE6B25664F8600A7FCA4 /* ViewController.swift */,
+				01ECFE8C2566571F00A7FCA4 /* Views */,
+				01ECFE872566561C00A7FCA4 /* Models */,
+				01ECFE7F256650F300A7FCA4 /* Network */,
 				01ECFE6D25664F8600A7FCA4 /* Main.storyboard */,
 				01ECFE7025664F8B00A7FCA4 /* Assets.xcassets */,
 				01ECFE7225664F8B00A7FCA4 /* LaunchScreen.storyboard */,
 				01ECFE7525664F8B00A7FCA4 /* Info.plist */,
+				01ECFE81256651BC00A7FCA4 /* URLs.plist */,
+				01ECFEA1256661D600A7FCA4 /* placeholder-image.png */,
 			);
 			path = MedlyApp;
+			sourceTree = "<group>";
+		};
+		01ECFE7F256650F300A7FCA4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				01ECFE7C256650EE00A7FCA4 /* CountriesLoader.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		01ECFE872566561C00A7FCA4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				01ECFE842566529700A7FCA4 /* Country.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		01ECFE8C2566571F00A7FCA4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				01ECFE892566571600A7FCA4 /* CountryTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4BE2999D302B4121574AB214 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3054C456C3C960CD214E00E4 /* Pods-MedlyApp.debug.xcconfig */,
+				E6A8F51327C026255AF104F6 /* Pods-MedlyApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E7927D496FEA48A8F997D0D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A3F8D4989B8E4F1D689AF646 /* Pods_MedlyApp.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +137,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01ECFE7825664F8B00A7FCA4 /* Build configuration list for PBXNativeTarget "MedlyApp" */;
 			buildPhases = (
+				F79725DAED86F09D87217D17 /* [CP] Check Pods Manifest.lock */,
 				01ECFE6025664F8600A7FCA4 /* Sources */,
 				01ECFE6125664F8600A7FCA4 /* Frameworks */,
 				01ECFE6225664F8600A7FCA4 /* Resources */,
+				C8DD23ABD88BDC89F0A9CD8E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,20 +191,67 @@
 			files = (
 				01ECFE7425664F8B00A7FCA4 /* LaunchScreen.storyboard in Resources */,
 				01ECFE7125664F8B00A7FCA4 /* Assets.xcassets in Resources */,
+				01ECFE82256651BC00A7FCA4 /* URLs.plist in Resources */,
+				01ECFEA2256661D600A7FCA4 /* placeholder-image.png in Resources */,
 				01ECFE6F25664F8600A7FCA4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C8DD23ABD88BDC89F0A9CD8E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MedlyApp/Pods-MedlyApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MedlyApp/Pods-MedlyApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MedlyApp/Pods-MedlyApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F79725DAED86F09D87217D17 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MedlyApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		01ECFE6025664F8600A7FCA4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01ECFE8A2566571600A7FCA4 /* CountryTableViewCell.swift in Sources */,
 				01ECFE6C25664F8600A7FCA4 /* ViewController.swift in Sources */,
 				01ECFE6825664F8600A7FCA4 /* AppDelegate.swift in Sources */,
 				01ECFE6A25664F8600A7FCA4 /* SceneDelegate.swift in Sources */,
+				01ECFE852566529700A7FCA4 /* Country.swift in Sources */,
+				01ECFE7D256650EE00A7FCA4 /* CountriesLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +395,7 @@
 		};
 		01ECFE7925664F8B00A7FCA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3054C456C3C960CD214E00E4 /* Pods-MedlyApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +415,7 @@
 		};
 		01ECFE7A25664F8B00A7FCA4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6A8F51327C026255AF104F6 /* Pods-MedlyApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

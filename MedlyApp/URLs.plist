@@ -2,13 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SchemeUserState</key>
-	<dict>
-		<key>MedlyApp.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
-		</dict>
-	</dict>
+	<key>CountriesURL</key>
+	<string>https://restcountries.eu/rest/v2/all</string>
+	<key>CountryIconURL</key>
+	<string>https://www.countryflags.io/[CODE]/flat/64.png</string>
 </dict>
 </plist>

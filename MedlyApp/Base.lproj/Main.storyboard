@@ -1,24 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MedlyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medly App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSM-7z-ye3">
+                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="XCV-KI-U0R"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countries failed to load." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCe-Cl-rgm">
+                                <rect key="frame" x="0.0" y="416" width="414" height="74"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="wVy-hY-Trd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MGr-ao-Hjm">
+                                <rect key="frame" x="0.0" y="112" width="414" height="784"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="KdL-nt-sJe"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="nuh-8f-FJ3"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="MGr-ao-Hjm" secondAttribute="bottom" id="4Lq-pw-9EB"/>
+                            <constraint firstItem="yCe-Cl-rgm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AwP-Qw-GP9"/>
+                            <constraint firstItem="yCe-Cl-rgm" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="IK4-Jn-AkF"/>
+                            <constraint firstItem="yCe-Cl-rgm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IRK-Db-gob"/>
+                            <constraint firstItem="MGr-ao-Hjm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YK8-Fv-9Ie"/>
+                            <constraint firstItem="DSM-7z-ye3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Z2K-hV-SXS"/>
+                            <constraint firstItem="MGr-ao-Hjm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="h7L-73-VGj"/>
+                            <constraint firstItem="DSM-7z-ye3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hJL-mD-nhu"/>
+                            <constraint firstItem="DSM-7z-ye3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qWK-Xk-7gX"/>
+                            <constraint firstItem="MGr-ao-Hjm" firstAttribute="top" secondItem="DSM-7z-ye3" secondAttribute="bottom" constant="8" symbolic="YES" id="zuf-k6-diN"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="failedToLoadLabel" destination="yCe-Cl-rgm" id="bhr-ux-qZ2"/>
+                        <outlet property="tableView" destination="MGr-ao-Hjm" id="hbP-vB-dv0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="102.89855072463769" y="93.75"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
