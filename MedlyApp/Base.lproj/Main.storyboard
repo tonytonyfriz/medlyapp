@@ -43,7 +43,7 @@
                                 </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="328-uU-OhH">
-                                <rect key="frame" x="127.5" y="115" width="159" height="32"/>
+                                <rect key="frame" x="127.5" y="118" width="159" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="gaJ-s0-ISU"/>
                                     <constraint firstAttribute="width" constant="159" id="z2M-2F-E2e"/>
@@ -72,12 +72,12 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="MGr-ao-Hjm" secondAttribute="bottom" id="4Lq-pw-9EB"/>
                             <constraint firstItem="jdl-Af-rnI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="54x-TG-goc"/>
-                            <constraint firstItem="328-uU-OhH" firstAttribute="top" secondItem="DSM-7z-ye3" secondAttribute="bottom" constant="11" id="7bp-sn-4DE"/>
+                            <constraint firstItem="328-uU-OhH" firstAttribute="top" secondItem="DSM-7z-ye3" secondAttribute="bottom" constant="14" id="7bp-sn-4DE"/>
                             <constraint firstItem="328-uU-OhH" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="A4R-qS-EEE"/>
                             <constraint firstItem="yCe-Cl-rgm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AwP-Qw-GP9"/>
                             <constraint firstItem="yCe-Cl-rgm" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="IK4-Jn-AkF"/>
                             <constraint firstItem="yCe-Cl-rgm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IRK-Db-gob"/>
-                            <constraint firstItem="jdl-Af-rnI" firstAttribute="top" secondItem="328-uU-OhH" secondAttribute="bottom" constant="16" id="JPm-Tn-ivz"/>
+                            <constraint firstItem="jdl-Af-rnI" firstAttribute="top" secondItem="328-uU-OhH" secondAttribute="bottom" constant="13" id="JPm-Tn-ivz"/>
                             <constraint firstItem="jdl-Af-rnI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Rv0-gQ-tVT"/>
                             <constraint firstItem="MGr-ao-Hjm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YK8-Fv-9Ie"/>
                             <constraint firstItem="DSM-7z-ye3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Z2K-hV-SXS"/>
