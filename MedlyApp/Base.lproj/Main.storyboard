@@ -35,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MGr-ao-Hjm">
-                                <rect key="frame" x="0.0" y="159" width="414" height="737"/>
+                                <rect key="frame" x="0.0" y="206" width="414" height="690"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="KdL-nt-sJe"/>
@@ -56,26 +56,40 @@
                                     <action selector="reverseCountries:" destination="BYZ-38-t0r" eventType="valueChanged" id="F5k-uf-uQC"/>
                                 </connections>
                             </segmentedControl>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="jdl-Af-rnI">
+                                <rect key="frame" x="0.0" y="162" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="B91-bR-8qr"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Ao6-Gz-qnl"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="MGr-ao-Hjm" secondAttribute="bottom" id="4Lq-pw-9EB"/>
+                            <constraint firstItem="jdl-Af-rnI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="54x-TG-goc"/>
                             <constraint firstItem="328-uU-OhH" firstAttribute="top" secondItem="DSM-7z-ye3" secondAttribute="bottom" constant="11" id="7bp-sn-4DE"/>
                             <constraint firstItem="328-uU-OhH" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="A4R-qS-EEE"/>
                             <constraint firstItem="yCe-Cl-rgm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AwP-Qw-GP9"/>
                             <constraint firstItem="yCe-Cl-rgm" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="IK4-Jn-AkF"/>
                             <constraint firstItem="yCe-Cl-rgm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IRK-Db-gob"/>
+                            <constraint firstItem="jdl-Af-rnI" firstAttribute="top" secondItem="328-uU-OhH" secondAttribute="bottom" constant="16" id="JPm-Tn-ivz"/>
+                            <constraint firstItem="jdl-Af-rnI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Rv0-gQ-tVT"/>
                             <constraint firstItem="MGr-ao-Hjm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YK8-Fv-9Ie"/>
                             <constraint firstItem="DSM-7z-ye3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Z2K-hV-SXS"/>
                             <constraint firstItem="MGr-ao-Hjm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="h7L-73-VGj"/>
                             <constraint firstItem="DSM-7z-ye3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hJL-mD-nhu"/>
                             <constraint firstItem="DSM-7z-ye3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qWK-Xk-7gX"/>
-                            <constraint firstItem="MGr-ao-Hjm" firstAttribute="top" secondItem="DSM-7z-ye3" secondAttribute="bottom" constant="55" id="zuf-k6-diN"/>
+                            <constraint firstItem="MGr-ao-Hjm" firstAttribute="top" secondItem="DSM-7z-ye3" secondAttribute="bottom" constant="102" id="zuf-k6-diN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="failedToLoadLabel" destination="yCe-Cl-rgm" id="bhr-ux-qZ2"/>
+                        <outlet property="forwardBackwardSegmentedControl" destination="328-uU-OhH" id="VdN-jf-rTw"/>
                         <outlet property="tableView" destination="MGr-ao-Hjm" id="hbP-vB-dv0"/>
                     </connections>
                 </viewController>

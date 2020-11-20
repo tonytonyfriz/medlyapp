@@ -9,16 +9,26 @@ import UIKit
 import AlamofireImage
 import SDWebImage
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var failedToLoadLabel: UILabel!
+    @IBOutlet var forwardBackwardSegmentedControl: UISegmentedControl!
     
+    var allCountries = [Country]()
+    var searchedCountries = [Country]()
     var indexedCountries = [Character: [Country]]()
     var indexedCountriesFirstLetter = [Character]()
     var indexedCountriesFirstLetterReversed = [Character]()
+    
+    var searchTerm : String?
 
-    var reverseCountries = false
+    var reverseCountries = false {
+        didSet {
+            tableView.reloadData()
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +42,21 @@ class ViewController: UIViewController, UITableViewDataSource {
     @IBAction func reverseCountries(_ sender: UISegmentedControl){
         if sender.selectedSegmentIndex == 0 {
             reverseCountries = false
-            tableView.reloadData()
+            if searchTerm?.count ?? 0 > 0 {
+                searchedCountries = searchedCountries.sorted(by: { $0.name ?? "" < $1.name ?? "" })
+            }
         } else {
             reverseCountries = true
-            tableView.reloadData()
+            if searchTerm?.count ?? 0 > 0 {
+                searchedCountries = searchedCountries.sorted(by: { $0.name ?? "" > $1.name ?? "" })
+            }
         }
-        
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
     
     func beginCountryLoad(){
         CountriesLoader.getCountries(success: { [weak self] (countries: [Country]) in
             DispatchQueue.main.async {
+                self?.allCountries = countries
                 self?.separateCountries(countries: countries)
                 self?.tableView.reloadData()
                 
@@ -60,11 +73,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     func separateCountries(countries: [Country]){
         var sortedCountries : [Country]?
-        if reverseCountries {
-            sortedCountries = countries.sorted(by: { $0.name ?? "" > $1.name ?? "" })
-        } else {
-            sortedCountries = countries
-        }
+        sortedCountries = countries.sorted(by: { $0.name ?? "" < $1.name ?? "" })
         
         for country in sortedCountries! {
             guard let firstLetter = country.name?.first else { continue }
@@ -78,7 +87,27 @@ class ViewController: UIViewController, UITableViewDataSource {
         }
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchTerm = searchText
+        
+        var foundCountries = [Country]()
+        for country in allCountries {
+            if country.name?.contains(searchText) == true {
+                foundCountries.append(country)
+            }
+        }
+        
+        foundCountries.sort(by: { $0.name ?? "" < $1.name ?? "" })
+        
+        searchedCountries = foundCountries
+        tableView.reloadData()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
+        if searchTerm?.count ?? 0 > 0 {
+            return 1
+        }
+        
         if reverseCountries == true {
             return indexedCountriesFirstLetterReversed.count
         }
@@ -86,6 +115,10 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchTerm?.count ?? 0 > 0 {
+            return searchedCountries.count
+        }
+        
         var firstLetter : Character?
         firstLetter = indexedCountriesFirstLetter[section]
         if reverseCountries {
@@ -95,6 +128,10 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        if searchTerm?.count ?? 0 > 0 {
+            return []
+        }
+        
         var iterationToUse = indexedCountriesFirstLetter
         if reverseCountries {
             iterationToUse = indexedCountriesFirstLetterReversed
@@ -109,6 +146,10 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if searchTerm?.count ?? 0 > 0 {
+            return nil
+        }
+        
         if reverseCountries {
             return String(indexedCountriesFirstLetterReversed[section])
         } else {
@@ -119,11 +160,17 @@ class ViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "country_cell")!
         
-        var firstLetter = indexedCountriesFirstLetter[indexPath.section]
-        if reverseCountries {
-            firstLetter = indexedCountriesFirstLetterReversed[indexPath.section]
+        var country : Country!
+        
+        if searchTerm?.count ?? 0 > 0 {
+            country = searchedCountries[indexPath.row]
+        } else {
+            var firstLetter = indexedCountriesFirstLetter[indexPath.section]
+            if reverseCountries {
+                firstLetter = indexedCountriesFirstLetterReversed[indexPath.section]
+            }
+            country = indexedCountries[firstLetter]?[indexPath.row]
         }
-        let country = indexedCountries[firstLetter]?[indexPath.row]
         
         cell.textLabel?.font = cell.textLabel!.font.withSize(22.0)
         cell.detailTextLabel?.font = cell.textLabel!.font.withSize(14.0)
