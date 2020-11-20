@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Country {
+struct Country {
     
     var name: String?
     var alpha2Code: String?

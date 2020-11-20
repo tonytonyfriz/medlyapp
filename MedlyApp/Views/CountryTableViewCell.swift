@@ -13,6 +13,8 @@ class CountryTableViewCell: UITableViewCell {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         
         self.imageView!.image = UIImage(named: "placeholder-image")
+        
+        selectionStyle = .none
     }
     
     required init?(coder: NSCoder) {

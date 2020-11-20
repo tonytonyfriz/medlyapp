@@ -14,11 +14,14 @@ class ViewController: UIViewController, UITableViewDataSource {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var failedToLoadLabel: UILabel!
     
-    var countries = [Country]()
+    var indexedCountries = [Character: [Country]]()
+    var indexedCountriesFirstLetter = [Character]()
+    var indexedCountriesFirstLetterReversed = [Character]()
 
+    var reverseCountries = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         tableView.register(CountryTableViewCell.self, forCellReuseIdentifier: "country_cell")
         failedToLoadLabel.isHidden = true
@@ -29,7 +32,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     func beginCountryLoad(){
         CountriesLoader.getCountries(success: { [weak self] (countries: [Country]) in
             DispatchQueue.main.async {
-                self?.countries = countries
+                self?.separateCountries(countries: countries)
                 self?.tableView.reloadData()
                 
                 self?.tableView.isHidden = false
@@ -43,24 +46,84 @@ class ViewController: UIViewController, UITableViewDataSource {
         })
     }
     
+    func separateCountries(countries: [Country]){
+        var sortedCountries : [Country]?
+        if reverseCountries {
+            sortedCountries = countries.sorted(by: { $0.name ?? "" > $1.name ?? "" })
+        } else {
+            sortedCountries = countries
+        }
+        
+        for country in sortedCountries! {
+            guard let firstLetter = country.name?.first else { continue }
+            if indexedCountries[firstLetter] == nil {
+                indexedCountries[firstLetter] = [Country]()
+                indexedCountriesFirstLetter.append(firstLetter)
+            }
+            indexedCountries[firstLetter]?.append(country)
+            indexedCountriesFirstLetter = indexedCountriesFirstLetter.sorted()
+            indexedCountriesFirstLetterReversed = indexedCountriesFirstLetter.sorted(by: { $0 > $1 })
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if reverseCountries == true {
+            return indexedCountriesFirstLetterReversed.count
+        }
+        return indexedCountriesFirstLetter.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.countries.count
+        var firstLetter : Character?
+        firstLetter = indexedCountriesFirstLetter[section]
+        if reverseCountries {
+            firstLetter = indexedCountriesFirstLetterReversed[section]
+        }
+        return indexedCountries[firstLetter!]?.count ?? 0
+    }
+    
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        var iterationToUse = indexedCountriesFirstLetter
+        if reverseCountries {
+            iterationToUse = indexedCountriesFirstLetterReversed
+        }
+        
+        var allKeys = [String]()
+        for key in iterationToUse {
+            allKeys.append(String(key))
+        }
+        
+        return allKeys
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if reverseCountries {
+            return String(indexedCountriesFirstLetterReversed[section])
+        } else {
+            return String(indexedCountriesFirstLetter[section])
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "country_cell")!
         
-        let country = countries[indexPath.row]
+        var firstLetter = indexedCountriesFirstLetter[indexPath.section]
+        if reverseCountries {
+            firstLetter = indexedCountriesFirstLetterReversed[indexPath.section]
+        }
+        let country = indexedCountries[firstLetter]?[indexPath.row]
         
         cell.textLabel?.font = cell.textLabel!.font.withSize(22.0)
         cell.detailTextLabel?.font = cell.textLabel!.font.withSize(14.0)
         
-        cell.textLabel?.text = country.name
-        cell.detailTextLabel?.text = country.capital
+        cell.textLabel?.text = country?.name
+        cell.detailTextLabel?.text = country?.capital
         
-        if let countryCode = country.alpha2Code {
+        if let countryCode = country?.alpha2Code {
             let countryIconURL = CountriesLoader.getCountryImageURL(code: countryCode)
-            cell.imageView!.af.setImage(withURL: URL(string: countryIconURL)!)
+            cell.imageView?.af.setImage(withURL: URL(string: countryIconURL)!)
+        } else {
+            cell.imageView?.image = UIImage(named: "placeholder-image")
         }
         
         return cell
