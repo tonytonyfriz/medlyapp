@@ -35,18 +35,34 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MGr-ao-Hjm">
-                                <rect key="frame" x="0.0" y="112" width="414" height="784"/>
+                                <rect key="frame" x="0.0" y="159" width="414" height="737"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="KdL-nt-sJe"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="nuh-8f-FJ3"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="328-uU-OhH">
+                                <rect key="frame" x="127.5" y="115" width="159" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="gaJ-s0-ISU"/>
+                                    <constraint firstAttribute="width" constant="159" id="z2M-2F-E2e"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Forward"/>
+                                    <segment title="Backward"/>
+                                </segments>
+                                <connections>
+                                    <action selector="reverseCountries:" destination="BYZ-38-t0r" eventType="valueChanged" id="F5k-uf-uQC"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="MGr-ao-Hjm" secondAttribute="bottom" id="4Lq-pw-9EB"/>
+                            <constraint firstItem="328-uU-OhH" firstAttribute="top" secondItem="DSM-7z-ye3" secondAttribute="bottom" constant="11" id="7bp-sn-4DE"/>
+                            <constraint firstItem="328-uU-OhH" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="A4R-qS-EEE"/>
                             <constraint firstItem="yCe-Cl-rgm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AwP-Qw-GP9"/>
                             <constraint firstItem="yCe-Cl-rgm" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="IK4-Jn-AkF"/>
                             <constraint firstItem="yCe-Cl-rgm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IRK-Db-gob"/>
@@ -55,7 +71,7 @@
                             <constraint firstItem="MGr-ao-Hjm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="h7L-73-VGj"/>
                             <constraint firstItem="DSM-7z-ye3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hJL-mD-nhu"/>
                             <constraint firstItem="DSM-7z-ye3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qWK-Xk-7gX"/>
-                            <constraint firstItem="MGr-ao-Hjm" firstAttribute="top" secondItem="DSM-7z-ye3" secondAttribute="bottom" constant="8" symbolic="YES" id="zuf-k6-diN"/>
+                            <constraint firstItem="MGr-ao-Hjm" firstAttribute="top" secondItem="DSM-7z-ye3" secondAttribute="bottom" constant="55" id="zuf-k6-diN"/>
                         </constraints>
                     </view>
                     <connections>

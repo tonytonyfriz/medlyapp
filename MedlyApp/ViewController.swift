@@ -18,7 +18,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     var indexedCountriesFirstLetter = [Character]()
     var indexedCountriesFirstLetterReversed = [Character]()
 
-    var reverseCountries = true
+    var reverseCountries = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,18 @@ class ViewController: UIViewController, UITableViewDataSource {
         failedToLoadLabel.isHidden = true
         
         beginCountryLoad()
+    }
+    
+    @IBAction func reverseCountries(_ sender: UISegmentedControl){
+        if sender.selectedSegmentIndex == 0 {
+            reverseCountries = false
+            tableView.reloadData()
+        } else {
+            reverseCountries = true
+            tableView.reloadData()
+        }
+        
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
     
     func beginCountryLoad(){
