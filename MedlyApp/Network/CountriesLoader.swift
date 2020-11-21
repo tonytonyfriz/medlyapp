@@ -23,7 +23,7 @@ class CountriesLoaderImageHelper {
         return ""
     }()
     
-    class func getCountryIconImageURL(withCode code: String) -> String {
+    class func getCountryIconImageURL(with code: String) -> String {
         countryIconURL.replacingOccurrences(of: "[CODE]", with: code)
     }
 }

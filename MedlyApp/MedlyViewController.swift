@@ -8,7 +8,7 @@
 import UIKit
 import AlamofireImage
 
-class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
+class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var failedToLoadLabel: UILabel!
@@ -183,7 +183,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
         cell.detailTextLabel?.text = country?.capital
         
         if let countryCode = country?.alpha2Code {
-            let countryIconURL = CountriesLoaderImageHelper.getCountryIconImageURL(withCode: countryCode)
+            let countryIconURL = CountriesLoaderImageHelper.getCountryIconImageURL(with: countryCode)
             cell.imageView?.af.setImage(withURL: URL(string: countryIconURL)!, cacheKey: nil, placeholderImage: UIImage(named: "placeholder-image"))
         } else {
             cell.imageView?.image = UIImage(named: "placeholder-image")
