@@ -7,13 +7,13 @@
 
 import UIKit
 import AlamofireImage
-import SDWebImage
 
 class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var failedToLoadLabel: UILabel!
     @IBOutlet var forwardBackwardSegmentedControl: UISegmentedControl!
+    @IBOutlet var networkActivityIndicator: UIActivityIndicatorView!
     
     var allCountries = [Country]()
     var searchedCountries = [Country]()
@@ -54,6 +54,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
     }
     
     func beginCountryLoad(){
+        networkActivityIndicator.isHidden = false
         CountriesLoader.getCountries(success: { [weak self] (countries: [Country]) in
             DispatchQueue.main.async {
                 self?.allCountries = countries
@@ -62,11 +63,14 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
                 
                 self?.tableView.isHidden = false
                 self?.failedToLoadLabel.isHidden = true
+                
+                self?.networkActivityIndicator.isHidden = true
             }
         }, failure: { [weak self] (error: Error?) in
             DispatchQueue.main.async {
                 self?.tableView.isHidden = true
                 self?.failedToLoadLabel.isHidden = false
+                self?.networkActivityIndicator.isHidden = true
             }
         })
     }
@@ -179,8 +183,8 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
         cell.detailTextLabel?.text = country?.capital
         
         if let countryCode = country?.alpha2Code {
-            let countryIconURL = CountriesLoader.getCountryImageURL(code: countryCode)
-            cell.imageView?.af.setImage(withURL: URL(string: countryIconURL)!)
+            let countryIconURL = countryCode.countryCodeIconURL()
+            cell.imageView?.af.setImage(withURL: URL(string: countryIconURL)!, cacheKey: nil, placeholderImage: UIImage(named: "placeholder-image"))
         } else {
             cell.imageView?.image = UIImage(named: "placeholder-image")
         }

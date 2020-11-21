@@ -66,6 +66,13 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Ao6-Gz-qnl"/>
                                 </connections>
                             </searchBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="3g4-ph-J6e">
+                                <rect key="frame" x="58" y="64" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="Lg8-wp-Uhk"/>
+                                    <constraint firstAttribute="height" constant="20" id="Xtm-qr-E0D"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -75,9 +82,11 @@
                             <constraint firstItem="328-uU-OhH" firstAttribute="top" secondItem="DSM-7z-ye3" secondAttribute="bottom" constant="14" id="7bp-sn-4DE"/>
                             <constraint firstItem="328-uU-OhH" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="A4R-qS-EEE"/>
                             <constraint firstItem="yCe-Cl-rgm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AwP-Qw-GP9"/>
+                            <constraint firstItem="3g4-ph-J6e" firstAttribute="centerY" secondItem="DSM-7z-ye3" secondAttribute="centerY" id="I31-o5-1NJ"/>
                             <constraint firstItem="yCe-Cl-rgm" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="IK4-Jn-AkF"/>
                             <constraint firstItem="yCe-Cl-rgm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IRK-Db-gob"/>
                             <constraint firstItem="jdl-Af-rnI" firstAttribute="top" secondItem="328-uU-OhH" secondAttribute="bottom" constant="13" id="JPm-Tn-ivz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3g4-ph-J6e" secondAttribute="trailing" constant="336" id="RhQ-EX-zds"/>
                             <constraint firstItem="jdl-Af-rnI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Rv0-gQ-tVT"/>
                             <constraint firstItem="MGr-ao-Hjm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YK8-Fv-9Ie"/>
                             <constraint firstItem="DSM-7z-ye3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Z2K-hV-SXS"/>
@@ -90,6 +99,7 @@
                     <connections>
                         <outlet property="failedToLoadLabel" destination="yCe-Cl-rgm" id="bhr-ux-qZ2"/>
                         <outlet property="forwardBackwardSegmentedControl" destination="328-uU-OhH" id="VdN-jf-rTw"/>
+                        <outlet property="networkActivityIndicator" destination="3g4-ph-J6e" id="yBF-L8-79r"/>
                         <outlet property="tableView" destination="MGr-ao-Hjm" id="hbP-vB-dv0"/>
                     </connections>
                 </viewController>

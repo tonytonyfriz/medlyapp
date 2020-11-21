@@ -7,10 +7,16 @@
 
 import Foundation
 
+extension String {
+    func countryCodeIconURL() -> String {
+        CountriesLoader.countryIconURL.replacingOccurrences(of: "[CODE]", with: self)
+    }
+}
+
 class CountriesLoader {
     
-    static var countriesURLPath = "CountriesURL"
-    static var countryImageURLPath = "CountryIconURL"
+    static let countriesURLPath = "CountriesURL"
+    static let countryImageURLPath = "CountryIconURL"
     
     static var countriesURL: String {
         guard let filePath = Bundle.main.url(forResource: "URLs", withExtension: "plist") else { return "" }
@@ -34,10 +40,6 @@ class CountriesLoader {
         }
         
         return ""
-    }
-    
-    class func getCountryImageURL(code: String) -> String {
-        return CountriesLoader.countryIconURL.replacingOccurrences(of: "[CODE]", with: code)
     }
     
     class func getCountries(success:@escaping (_ movies: [Country]) -> Void, failure:@escaping (_ error: Error?) -> Void){
