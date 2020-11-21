@@ -11,6 +11,8 @@ import AlamofireImage
 class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var searchBar: UISearchBar!
+    
     @IBOutlet var failedToLoadLabel: UILabel!
     @IBOutlet var forwardBackwardSegmentedControl: UISegmentedControl!
     @IBOutlet var networkActivityIndicator: UIActivityIndicatorView!
@@ -35,6 +37,8 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
         
         tableView.register(CountryTableViewCell.self, forCellReuseIdentifier: "country_cell")
         failedToLoadLabel.isHidden = true
+        
+        searchBar.showsCancelButton = true
         
         beginCountryLoad()
     }
@@ -107,6 +111,18 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
         tableView.reloadData()
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.searchTextField.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.searchTextField.resignFirstResponder()
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        return true
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         if searchTerm?.count ?? 0 > 0 {
             return 1
@@ -164,7 +180,7 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "country_cell")!
         
-        var country : Country!
+        var country : Country?
         
         if searchTerm?.count ?? 0 > 0 {
             country = searchedCountries[indexPath.row]

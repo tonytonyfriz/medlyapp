@@ -100,6 +100,7 @@
                         <outlet property="failedToLoadLabel" destination="yCe-Cl-rgm" id="bhr-ux-qZ2"/>
                         <outlet property="forwardBackwardSegmentedControl" destination="328-uU-OhH" id="VdN-jf-rTw"/>
                         <outlet property="networkActivityIndicator" destination="3g4-ph-J6e" id="yBF-L8-79r"/>
+                        <outlet property="searchBar" destination="jdl-Af-rnI" id="gHj-cg-00Z"/>
                         <outlet property="tableView" destination="MGr-ao-Hjm" id="hbP-vB-dv0"/>
                     </connections>
                 </viewController>
