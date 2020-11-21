@@ -16,7 +16,7 @@ class CountriesLoaderImageHelper {
         let data = try! Data(contentsOf: filePath)
         guard let plist = try! PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String:String] else { return "" }
         
-        if let baseUrl = plist[CountriesLoaderImageHelper.countryImageURLPath] {
+        if let baseUrl = plist[countryImageURLPath] {
             return baseUrl
         }
         
