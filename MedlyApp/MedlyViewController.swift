@@ -184,7 +184,7 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
             if reverseCountries == false {
                 let firstLetter = indexedCountriesFirstLetter[indexPath.section]
                 country = indexedCountries[firstLetter]?[indexPath.row]
-            } else if reverseCountries == true {
+            } else {
                 let firstLetter = indexedCountriesFirstLetterReversed[indexPath.section]
                 country = indexedCountries[firstLetter]?.sorted(by: { $0.name ?? "" > $1.name ?? "" })[indexPath.row]
             }
