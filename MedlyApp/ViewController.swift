@@ -8,6 +8,12 @@
 import UIKit
 import AlamofireImage
 
+extension String {
+    func countryCodeIconURL() -> String {
+        CountriesLoader.countryIconURL.replacingOccurrences(of: "[CODE]", with: self)
+    }
+}
+
 class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet var tableView: UITableView!

@@ -7,12 +7,6 @@
 
 import Foundation
 
-extension String {
-    func countryCodeIconURL() -> String {
-        CountriesLoader.countryIconURL.replacingOccurrences(of: "[CODE]", with: self)
-    }
-}
-
 class CountriesLoader {
     
     static let countriesURLPath = "CountriesURL"
