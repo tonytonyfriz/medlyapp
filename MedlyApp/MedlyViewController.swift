@@ -90,9 +90,10 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
                 indexedCountriesFirstLetter.append(firstLetter)
             }
             indexedCountries[firstLetter]?.append(country)
-            indexedCountriesFirstLetter = indexedCountriesFirstLetter.sorted()
-            indexedCountriesFirstLetterReversed = indexedCountriesFirstLetter.sorted(by: { $0 > $1 })
         }
+        
+        indexedCountriesFirstLetter = indexedCountriesFirstLetter.sorted()
+        indexedCountriesFirstLetterReversed = indexedCountriesFirstLetter.sorted(by: { $0 > $1 })
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
