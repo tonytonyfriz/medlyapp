@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Country {
+struct Country : Decodable {
     
     var name: String?
     var alpha2Code: String?

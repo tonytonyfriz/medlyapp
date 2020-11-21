@@ -57,13 +57,8 @@ class CountriesLoader {
                 return
             }
             do {
-                let dict = try JSONSerialization.jsonObject(with: unwrappedData, options: []) as! [[String: Any]]
-                var allCountries = [Country]()
-                for result in dict {
-                    let newCountry = Country(someName: (result["name"] as? String) ?? "", someCode: (result["alpha2Code"] as? String) ?? "", someCapital: (result["capital"] as? String) ?? "")
-                    allCountries.append(newCountry)
-                }
-                success(allCountries)
+                let loadedCountries = try JSONDecoder().decode([Country].self, from: unwrappedData)
+                success(loadedCountries)
             } catch {
                 print("failed to deal with json")
                 failure(nil)
