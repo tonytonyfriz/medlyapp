@@ -11,24 +11,24 @@ class CountriesLoaderImageHelper {
     
     static let countryImageURLPath = "CountryIconURL"
     
-    static var countryIconURL: String {
+    static var countryIconURL: String = {
         guard let filePath = Bundle.main.url(forResource: "URLs", withExtension: "plist") else { return "" }
         let data = try! Data(contentsOf: filePath)
         guard let plist = try! PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String:String] else { return "" }
         
-        if let baseUrl = plist[countryImageURLPath] {
+        if let baseUrl = plist[CountriesLoaderImageHelper.countryImageURLPath] {
             return baseUrl
         }
         
         return ""
-    }
+    }()
 }
 
 class CountriesLoader {
     
     static let countriesURLPath = "CountriesURL"
     
-    static var countriesURL: String {
+    static var countriesURL: String = {
         guard let filePath = Bundle.main.url(forResource: "URLs", withExtension: "plist") else { return "" }
         let data = try! Data(contentsOf: filePath)
         guard let plist = try! PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String:String] else { return "" }
@@ -38,7 +38,7 @@ class CountriesLoader {
         }
         
         return ""
-    }
+    }()
     
     class func getCountries(success:@escaping (_ movies: [Country]) -> Void, failure:@escaping (_ error: Error?) -> Void){
         let url = CountriesLoader.countriesURL
