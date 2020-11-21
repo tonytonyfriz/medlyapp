@@ -183,7 +183,7 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
         cell.detailTextLabel?.text = country?.capital
         
         if let countryCode = country?.alpha2Code {
-            let countryIconURL = CountriesLoaderImageHelper.getCountryIconImageURL(with: countryCode)
+            let countryIconURL = CountriesLoaderImageHelper.getCountryIconImageURL(withCode: countryCode)
             cell.imageView?.af.setImage(withURL: URL(string: countryIconURL)!, cacheKey: nil, placeholderImage: UIImage(named: "placeholder-image"))
         } else {
             cell.imageView?.image = UIImage(named: "placeholder-image")
