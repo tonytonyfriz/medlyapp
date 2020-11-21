@@ -48,13 +48,13 @@ class CountriesLoader {
         let task = URLSession.shared.dataTask(with: URLRequest(url: URL(string: url)!), completionHandler: {(data, response, error) in
             if let error = error {
                 failure(error)
-                return;
+                return
             }
             
             guard let unwrappedData = data else {
                 print("data wasn't loaded")
                 failure(nil)
-                return;
+                return
             }
             do {
                 let dict = try JSONSerialization.jsonObject(with: unwrappedData, options: []) as! [[String: Any]]
