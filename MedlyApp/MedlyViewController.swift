@@ -128,9 +128,6 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
             return 1
         }
         
-        if reverseCountries == true {
-            return indexedCountriesFirstLetterReversed.count
-        }
         return indexedCountriesFirstLetter.count
     }
     
