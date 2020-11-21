@@ -53,6 +53,7 @@ class CountriesLoader {
             
             guard let unwrappedData = data else {
                 print("data wasn't loaded")
+                failure(nil)
                 return;
             }
             do {
