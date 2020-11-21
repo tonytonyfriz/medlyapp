@@ -136,12 +136,11 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
             return searchedCountries.count
         }
         
-        var firstLetter : Character?
-        firstLetter = indexedCountriesFirstLetter[section]
+        var firstLetter = indexedCountriesFirstLetter[section]
         if reverseCountries {
             firstLetter = indexedCountriesFirstLetterReversed[section]
         }
-        return indexedCountries[firstLetter!]?.count ?? 0
+        return indexedCountries[firstLetter]?.count ?? 0
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -187,6 +186,9 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
                 firstLetter = indexedCountriesFirstLetterReversed[indexPath.section]
             }
             country = indexedCountries[firstLetter]?[indexPath.row]
+            if reverseCountries {
+                country = indexedCountries[firstLetter]?.sorted(by: { $0.name ?? "" > $1.name ?? "" })[indexPath.row]
+            }
         }
         
         cell.textLabel?.font = cell.textLabel!.font.withSize(22.0)
