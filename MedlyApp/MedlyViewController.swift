@@ -80,10 +80,9 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
     }
     
     func separateCountries(countries: [Country]){
-        var sortedCountries : [Country]?
-        sortedCountries = countries.sorted(by: { $0.name ?? "" < $1.name ?? "" })
+        let sortedCountries = countries.sorted(by: { $0.name ?? "" < $1.name ?? "" })
         
-        for country in sortedCountries! {
+        for country in sortedCountries {
             guard let firstLetter = country.name?.first else { continue }
             if indexedCountries[firstLetter] == nil {
                 indexedCountries[firstLetter] = [Country]()
