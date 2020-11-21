@@ -145,7 +145,7 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         if searchTerm?.count ?? 0 > 0 {
-            return []
+            return nil
         }
         
         var iterationToUse = indexedCountriesFirstLetter
