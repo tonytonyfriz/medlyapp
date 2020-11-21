@@ -7,22 +7,9 @@
 
 import Foundation
 
-class CountriesLoader {
+class CountriesLoaderImageHelper {
     
-    static let countriesURLPath = "CountriesURL"
     static let countryImageURLPath = "CountryIconURL"
-    
-    static var countriesURL: String {
-        guard let filePath = Bundle.main.url(forResource: "URLs", withExtension: "plist") else { return "" }
-        let data = try! Data(contentsOf: filePath)
-        guard let plist = try! PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String:String] else { return "" }
-        
-        if let baseUrl = plist[countriesURLPath] {
-            return baseUrl
-        }
-        
-        return ""
-    }
     
     static var countryIconURL: String {
         guard let filePath = Bundle.main.url(forResource: "URLs", withExtension: "plist") else { return "" }
@@ -30,6 +17,23 @@ class CountriesLoader {
         guard let plist = try! PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String:String] else { return "" }
         
         if let baseUrl = plist[countryImageURLPath] {
+            return baseUrl
+        }
+        
+        return ""
+    }
+}
+
+class CountriesLoader {
+    
+    static let countriesURLPath = "CountriesURL"
+    
+    static var countriesURL: String {
+        guard let filePath = Bundle.main.url(forResource: "URLs", withExtension: "plist") else { return "" }
+        let data = try! Data(contentsOf: filePath)
+        guard let plist = try! PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String:String] else { return "" }
+        
+        if let baseUrl = plist[countriesURLPath] {
             return baseUrl
         }
         

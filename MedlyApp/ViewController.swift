@@ -9,8 +9,8 @@ import UIKit
 import AlamofireImage
 
 extension String {
-    func countryCodeIconURL() -> String {
-        CountriesLoader.countryIconURL.replacingOccurrences(of: "[CODE]", with: self)
+    func CountryCodeIconURL() -> String {
+        CountriesLoaderImageHelper.countryIconURL.replacingOccurrences(of: "[CODE]", with: self)
     }
 }
 
@@ -189,7 +189,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
         cell.detailTextLabel?.text = country?.capital
         
         if let countryCode = country?.alpha2Code {
-            let countryIconURL = countryCode.countryCodeIconURL()
+            let countryIconURL = countryCode.CountryCodeIconURL()
             cell.imageView?.af.setImage(withURL: URL(string: countryIconURL)!, cacheKey: nil, placeholderImage: UIImage(named: "placeholder-image"))
         } else {
             cell.imageView?.image = UIImage(named: "placeholder-image")
