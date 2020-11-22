@@ -20,6 +20,7 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
     var allCountries = [Country]()
     var searchedCountries = [Country]()
     var indexedCountries = [Character: [Country]]()
+    var indexedCountriesReversed = [Character: [Country]]()
     var indexedCountriesFirstLetter = [Character]()
     var indexedCountriesFirstLetterReversed = [Character]()
     
@@ -87,8 +88,15 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
             if indexedCountries[firstLetter] == nil {
                 indexedCountries[firstLetter] = [Country]()
                 indexedCountriesFirstLetter.append(firstLetter)
+                
+                indexedCountriesReversed[firstLetter] = [Country]()
             }
             indexedCountries[firstLetter]?.append(country)
+            indexedCountriesReversed[firstLetter]?.append(country)
+        }
+        
+        for key in indexedCountriesReversed.keys {
+            indexedCountriesReversed[key] = indexedCountriesReversed[key]?.sorted(by: { $0.name ?? "" > $1.name ?? "" })
         }
         
         indexedCountriesFirstLetter = indexedCountriesFirstLetter.sorted()
@@ -186,7 +194,7 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
                 country = indexedCountries[firstLetter]?[indexPath.row]
             } else {
                 let firstLetter = indexedCountriesFirstLetterReversed[indexPath.section]
-                country = indexedCountries[firstLetter]?.sorted(by: { $0.name ?? "" > $1.name ?? "" })[indexPath.row]
+                country = indexedCountriesReversed[firstLetter]?[indexPath.row]
             }
         }
         
