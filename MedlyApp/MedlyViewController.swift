@@ -182,7 +182,7 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "country_cell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "country_cell")! as! CountryTableViewCell
         
         var country : Country?
         
@@ -198,18 +198,7 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
             }
         }
         
-        cell.textLabel?.font = cell.textLabel!.font.withSize(22.0)
-        cell.detailTextLabel?.font = cell.textLabel!.font.withSize(14.0)
-        
-        cell.textLabel?.text = country?.name
-        cell.detailTextLabel?.text = country?.capital
-        
-        if let countryCode = country?.alpha2Code {
-            let countryIconURL = CountriesLoaderImageHelper.getCountryIconImageURL(withCode: countryCode)
-            cell.imageView?.af.setImage(withURL: URL(string: countryIconURL)!, cacheKey: nil, placeholderImage: UIImage(named: "placeholder-image"))
-        } else {
-            cell.imageView?.image = UIImage(named: "placeholder-image")
-        }
+        cell.setup(with: country!)
         
         return cell
     }

@@ -31,5 +31,20 @@ class CountryTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setup(with country: Country){
+        textLabel?.font = textLabel!.font.withSize(22.0)
+        detailTextLabel?.font = textLabel!.font.withSize(14.0)
+        
+        textLabel?.text = country.name
+        detailTextLabel?.text = country.capital
+        
+        if let countryCode = country.alpha2Code {
+            let countryIconURL = CountriesLoaderImageHelper.getCountryIconImageURL(withCode: countryCode)
+            imageView?.af.setImage(withURL: URL(string: countryIconURL)!, cacheKey: nil, placeholderImage: UIImage(named: "placeholder-image"))
+        } else {
+            imageView?.image = UIImage(named: "placeholder-image")
+        }
+    }
 
 }
