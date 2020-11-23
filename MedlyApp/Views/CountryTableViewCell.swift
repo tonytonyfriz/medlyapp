@@ -38,7 +38,17 @@ class CountryTableViewCell: UITableViewCell {
         detailTextLabel?.font = textLabel!.font.withSize(14.0)
         
         textLabel?.text = country.name
-        detailTextLabel?.text = country.capital
+        var capital = ""
+        if country.capital != nil && country.capital?.count ?? 0 > 0 {
+            capital = country.capital! + ", "
+        }
+        var population = ""
+        if country.population != nil {
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            population = "population: " + numberFormatter.string(from: NSNumber(value: country.population!))!
+        }
+        detailTextLabel?.text = capital + population
         
         if let countryCode = country.alpha2Code {
             let countryIconURL = CountriesLoaderImageHelper.getCountryIconImageURL(withCode: countryCode)
