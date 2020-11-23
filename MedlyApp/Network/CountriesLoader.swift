@@ -47,7 +47,13 @@ class CountriesLoader {
     class func getCountries(success:@escaping (_ movies: [Country]) -> Void, failure:@escaping (_ error: Error?) -> Void){
         let url = CountriesLoader.countriesURL
         
-        let task = URLSession.shared.dataTask(with: URLRequest(url: URL(string: url)!), completionHandler: {(data, response, error) in
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .reloadIgnoringLocalCacheData
+        config.urlCache = nil
+
+        let session = URLSession.init(configuration: config)
+        
+        let task = session.dataTask(with: URLRequest(url: URL(string: url)!), completionHandler: {(data, response, error) in
             if let error = error {
                 failure(error)
                 return
@@ -60,6 +66,7 @@ class CountriesLoader {
             }
             do {
                 let loadedCountries = try JSONDecoder().decode([Country].self, from: unwrappedData)
+                print("countries loaded successfully")
                 success(loadedCountries)
             } catch {
                 print("failed to deal with json")

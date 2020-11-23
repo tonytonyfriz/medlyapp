@@ -43,6 +43,7 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
         failedToLoadLabel.isHidden = true
         
         searchBar.showsCancelButton = true
+        searchBar.searchTextField.autocapitalizationType = .words
         
         beginCountryLoad()
     }
@@ -113,7 +114,7 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
     func updateSearchedCountries(){
         var foundCountries = [Country]()
         for country in allCountries {
-            if country.name?.contains(searchTerm ?? "") == true {
+            if let _ = country.name?.range(of: searchTerm ?? "", options: .caseInsensitive) {
                 foundCountries.append(country)
             }
         }
