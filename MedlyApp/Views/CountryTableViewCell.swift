@@ -50,7 +50,7 @@ class CountryTableViewCell: UITableViewCell {
             population = "population: " + numberFormatter.string(from: NSNumber(value: country.population!))!
         }
         
-        var attributedString = NSMutableAttributedString(string: capital+population)
+        let attributedString = NSMutableAttributedString(string: capital+population)
         attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 14.0), range: NSMakeRange(0, (capital+population).count))
         attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 14.0), range: NSMakeRange(0, (capital).count))
         
