@@ -34,10 +34,11 @@ class CountryTableViewCell: UITableViewCell {
     }
     
     func setup(with country: Country){
-        textLabel?.font = textLabel!.font.withSize(22.0)
-        detailTextLabel?.font = textLabel!.font.withSize(14.0)
+        textLabel?.font = UIFont.boldSystemFont(ofSize: 22.0)
+        detailTextLabel?.font = detailTextLabel!.font.withSize(14.0)
         
         textLabel?.text = country.name
+        
         var capital = ""
         if country.capital != nil && country.capital?.count ?? 0 > 0 {
             capital = country.capital! + ", "
@@ -48,7 +49,12 @@ class CountryTableViewCell: UITableViewCell {
             numberFormatter.numberStyle = .decimal
             population = "population: " + numberFormatter.string(from: NSNumber(value: country.population!))!
         }
-        detailTextLabel?.text = capital + population
+        
+        var attributedString = NSMutableAttributedString(string: capital+population)
+        attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 14.0), range: NSMakeRange(0, (capital+population).count))
+        attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 14.0), range: NSMakeRange(0, (capital).count))
+        
+        detailTextLabel?.attributedText = attributedString
         
         if let countryCode = country.alpha2Code {
             let countryIconURL = CountriesLoaderImageHelper.getCountryIconImageURL(withCode: countryCode)
