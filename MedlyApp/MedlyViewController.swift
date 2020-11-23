@@ -23,7 +23,11 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
     var indexedCountriesFirstLetter = [Character]()
     var indexedCountriesFirstLetterReversed = [Character]()
     
-    var searchTerm : String?
+    var searchTerm : String? {
+        didSet {
+            updateSearchedCountries()
+        }
+    }
 
     var reverseCountries = false {
         didSet {
@@ -104,10 +108,12 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchTerm = searchText
-        
+    }
+    
+    func updateSearchedCountries(){
         var foundCountries = [Country]()
         for country in allCountries {
-            if country.name?.contains(searchText) == true {
+            if country.name?.contains(searchTerm ?? "") == true {
                 foundCountries.append(country)
             }
         }
@@ -123,6 +129,8 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.searchTextField.text = ""
+        searchTerm = ""
         searchBar.searchTextField.resignFirstResponder()
     }
     
