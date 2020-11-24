@@ -10,6 +10,8 @@ import UIKit
 let COUNTRIES_LAST_SAVE_DATE_DEFAULTS_STRING = "last_countries_save"
 let COUNTRIES_LAST_SAVE_TIME_ELAPSED_DIFFERENCE : Double = 60*60*24
 
+let COUNTRY_REQUIRED_FIELDS = ["name", "alpha2Code", "capital", "population", "timezones"]
+
 class CountriesLoaderImageHelper {
     
     static let countryImageURLPath = "CountryIconURL"
@@ -50,7 +52,22 @@ class CountriesLoader {
     }()
     
     class func getCountries(success:@escaping (_ movies: [Country]) -> Void, failure:@escaping (_ error: Error?) -> Void){
-        let url = CountriesLoader.countriesURL
+        var url = CountriesLoader.countriesURL
+        
+        url.append("?fields=")
+        
+        var i = 0
+        for field in COUNTRY_REQUIRED_FIELDS {
+            url.append(field)
+            
+            if i != COUNTRY_REQUIRED_FIELDS.count - 1 {
+                url.append(";")
+            }
+            
+            i += 1
+        }
+        
+        print(url)
         
         let config = URLSessionConfiguration.default
         config.requestCachePolicy = .reloadIgnoringLocalCacheData
@@ -138,6 +155,7 @@ class CountriesLoader {
     }
     
     class func showOfflineModeAlert(){
+        return
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: "Flags Unavailable", message: "You are in offline mode; country flag icons are unavailable.", preferredStyle: .alert)
             let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)

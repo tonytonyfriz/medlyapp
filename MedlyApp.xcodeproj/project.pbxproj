@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0158EAC9256DAC2600C98FCE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158EAC7256DAC2600C98FCE /* DetailViewController.swift */; };
+		0158EACA256DAC2600C98FCE /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0158EAC8256DAC2600C98FCE /* DetailViewController.xib */; };
 		01C677E4256CCC85007B0EAB /* placeholder-image-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C677E3256CCC85007B0EAB /* placeholder-image-small.png */; };
 		01ECFE6825664F8600A7FCA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ECFE6725664F8600A7FCA4 /* AppDelegate.swift */; };
 		01ECFE6A25664F8600A7FCA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ECFE6925664F8600A7FCA4 /* SceneDelegate.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0158EAC7256DAC2600C98FCE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		0158EAC8256DAC2600C98FCE /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		01C677E3256CCC85007B0EAB /* placeholder-image-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder-image-small.png"; sourceTree = "<group>"; };
 		01ECFE6425664F8600A7FCA4 /* MedlyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedlyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01ECFE6725664F8600A7FCA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +80,8 @@
 				01ECFE6725664F8600A7FCA4 /* AppDelegate.swift */,
 				01ECFE6925664F8600A7FCA4 /* SceneDelegate.swift */,
 				01ECFE6B25664F8600A7FCA4 /* MedlyViewController.swift */,
+				0158EAC7256DAC2600C98FCE /* DetailViewController.swift */,
+				0158EAC8256DAC2600C98FCE /* DetailViewController.xib */,
 				01ECFE8C2566571F00A7FCA4 /* Views */,
 				01ECFE872566561C00A7FCA4 /* Models */,
 				01ECFE7F256650F300A7FCA4 /* Network */,
@@ -190,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01ECFE7425664F8B00A7FCA4 /* LaunchScreen.storyboard in Resources */,
+				0158EACA256DAC2600C98FCE /* DetailViewController.xib in Resources */,
 				01C677E4256CCC85007B0EAB /* placeholder-image-small.png in Resources */,
 				01ECFE7125664F8B00A7FCA4 /* Assets.xcassets in Resources */,
 				01ECFE82256651BC00A7FCA4 /* URLs.plist in Resources */,
@@ -252,6 +259,7 @@
 				01ECFE6A25664F8600A7FCA4 /* SceneDelegate.swift in Sources */,
 				01ECFE852566529700A7FCA4 /* Country.swift in Sources */,
 				01ECFE7D256650EE00A7FCA4 /* CountriesLoader.swift in Sources */,
+				0158EAC9256DAC2600C98FCE /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

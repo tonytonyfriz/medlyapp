@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
+class MedlyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
@@ -237,6 +237,29 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
         cell.setup(with: country!)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailViewController = DetailViewController(nibName: "DetailViewController", bundle: nil)
+        
+        var country : Country?
+        
+        if searchTerm?.count ?? 0 > 0 {
+            country = searchedCountries[indexPath.row]
+        } else if countriesSequence == .byPopulation {
+            country = countriesByPopulation[indexPath.row]
+        } else {
+            if countriesSequence == .ascending {
+                let firstLetter = indexedCountriesFirstLetter[indexPath.section]
+                country = indexedCountries[firstLetter]?[indexPath.row]
+            } else {
+                let firstLetter = indexedCountriesFirstLetterReversed[indexPath.section]
+                country = indexedCountriesReversed[firstLetter]?[indexPath.row]
+            }
+        }
+        
+        detailViewController.country = country
+        present(detailViewController, animated: true, completion: nil)
     }
     
 
