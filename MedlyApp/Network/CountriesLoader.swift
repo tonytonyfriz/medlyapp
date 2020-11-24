@@ -7,6 +7,9 @@
 
 import Foundation
 
+let COUNTRIES_LAST_SAVE_DATE_DEFAULTS_STRING = "last_countries_save"
+let COUNTRIES_LAST_SAVE_TIME_ELAPSED_DIFFERENCE : Double = 60*60*24
+
 class CountriesLoaderImageHelper {
     
     static let countryImageURLPath = "CountryIconURL"
@@ -95,6 +98,15 @@ class CountriesLoader {
     }
     
     class func writeCountriesData(countries: [Country]) {
+        if let lastSaveDate = UserDefaults.standard.object(forKey: COUNTRIES_LAST_SAVE_DATE_DEFAULTS_STRING) as? Date {
+            if Date().timeIntervalSince(lastSaveDate) < COUNTRIES_LAST_SAVE_TIME_ELAPSED_DIFFERENCE {
+                return
+            }
+            UserDefaults.standard.setValue(Date(), forKey: COUNTRIES_LAST_SAVE_DATE_DEFAULTS_STRING)
+        } else {
+            UserDefaults.standard.setValue(Date(), forKey: COUNTRIES_LAST_SAVE_DATE_DEFAULTS_STRING)
+        }
+        
         let encoder = PropertyListEncoder()
         encoder.outputFormat = .xml
 
