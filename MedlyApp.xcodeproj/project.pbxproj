@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01C677E4256CCC85007B0EAB /* placeholder-image-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C677E3256CCC85007B0EAB /* placeholder-image-small.png */; };
 		01ECFE6825664F8600A7FCA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ECFE6725664F8600A7FCA4 /* AppDelegate.swift */; };
 		01ECFE6A25664F8600A7FCA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ECFE6925664F8600A7FCA4 /* SceneDelegate.swift */; };
 		01ECFE6C25664F8600A7FCA4 /* MedlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ECFE6B25664F8600A7FCA4 /* MedlyViewController.swift */; };
@@ -17,11 +18,11 @@
 		01ECFE82256651BC00A7FCA4 /* URLs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01ECFE81256651BC00A7FCA4 /* URLs.plist */; };
 		01ECFE852566529700A7FCA4 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ECFE842566529700A7FCA4 /* Country.swift */; };
 		01ECFE8A2566571600A7FCA4 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ECFE892566571600A7FCA4 /* CountryTableViewCell.swift */; };
-		01ECFEA2256661D600A7FCA4 /* placeholder-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 01ECFEA1256661D600A7FCA4 /* placeholder-image.png */; };
 		462A109E1875251B860E466B /* Pods_MedlyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F8D4989B8E4F1D689AF646 /* Pods_MedlyApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01C677E3256CCC85007B0EAB /* placeholder-image-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder-image-small.png"; sourceTree = "<group>"; };
 		01ECFE6425664F8600A7FCA4 /* MedlyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedlyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01ECFE6725664F8600A7FCA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01ECFE6925664F8600A7FCA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,7 +35,6 @@
 		01ECFE81256651BC00A7FCA4 /* URLs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = URLs.plist; sourceTree = "<group>"; };
 		01ECFE842566529700A7FCA4 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		01ECFE892566571600A7FCA4 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
-		01ECFEA1256661D600A7FCA4 /* placeholder-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder-image.png"; sourceTree = "<group>"; };
 		3054C456C3C960CD214E00E4 /* Pods-MedlyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedlyApp.debug.xcconfig"; path = "Target Support Files/Pods-MedlyApp/Pods-MedlyApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A3F8D4989B8E4F1D689AF646 /* Pods_MedlyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedlyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6A8F51327C026255AF104F6 /* Pods-MedlyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedlyApp.release.xcconfig"; path = "Target Support Files/Pods-MedlyApp/Pods-MedlyApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 				01ECFE7225664F8B00A7FCA4 /* LaunchScreen.storyboard */,
 				01ECFE7525664F8B00A7FCA4 /* Info.plist */,
 				01ECFE81256651BC00A7FCA4 /* URLs.plist */,
-				01ECFEA1256661D600A7FCA4 /* placeholder-image.png */,
+				01C677E3256CCC85007B0EAB /* placeholder-image-small.png */,
 			);
 			path = MedlyApp;
 			sourceTree = "<group>";
@@ -190,9 +190,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				01ECFE7425664F8B00A7FCA4 /* LaunchScreen.storyboard in Resources */,
+				01C677E4256CCC85007B0EAB /* placeholder-image-small.png in Resources */,
 				01ECFE7125664F8B00A7FCA4 /* Assets.xcassets in Resources */,
 				01ECFE82256651BC00A7FCA4 /* URLs.plist in Resources */,
-				01ECFEA2256661D600A7FCA4 /* placeholder-image.png in Resources */,
 				01ECFE6F25664F8600A7FCA4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

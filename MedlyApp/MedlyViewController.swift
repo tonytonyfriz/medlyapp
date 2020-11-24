@@ -16,8 +16,15 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
     @IBOutlet var forwardBackwardSegmentedControl: UISegmentedControl!
     @IBOutlet var networkActivityIndicator: UIActivityIndicatorView!
     
+    enum CountriesSequence {
+        case forward
+        case reverse
+        case byPopulation
+    }
+    
     var allCountries = [Country]()
     var searchedCountries = [Country]()
+    var countriesByPopulation = [Country]()
     var indexedCountries = [Character: [Country]]()
     var indexedCountriesReversed = [Character: [Country]]()
     var indexedCountriesFirstLetter = [Character]()
@@ -29,7 +36,7 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
         }
     }
 
-    var reverseCountries = false {
+    var countriesSequence = CountriesSequence.forward {
         didSet {
             tableView.reloadData()
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
@@ -48,17 +55,19 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
         beginCountryLoad()
     }
     
-    @IBAction func reverseCountries(_ sender: UISegmentedControl){
+    @IBAction func setCountriesSequence(_ sender: UISegmentedControl){
         if sender.selectedSegmentIndex == 0 {
-            reverseCountries = false
+            countriesSequence = .forward
             if searchTerm?.count ?? 0 > 0 {
                 searchedCountries = searchedCountries.sorted(by: { $0.name ?? "" < $1.name ?? "" })
             }
-        } else {
-            reverseCountries = true
+        } else if sender.selectedSegmentIndex == 1{
+            countriesSequence = .reverse
             if searchTerm?.count ?? 0 > 0 {
                 searchedCountries = searchedCountries.sorted(by: { $0.name ?? "" > $1.name ?? "" })
             }
+        } else {
+            countriesSequence = .byPopulation
         }
     }
     
@@ -86,6 +95,7 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
     
     func separateCountries(countries: [Country]){
         let sortedCountries = countries.sorted(by: { $0.name ?? "" < $1.name ?? "" })
+        countriesByPopulation = countries.sorted(by: { $0.population ?? 0 > $1.population ?? 0 })
         
         for country in sortedCountries {
             guard let firstLetter = country.name?.first else { continue }
@@ -140,6 +150,10 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if countriesSequence == .byPopulation {
+            return 1
+        }
+        
         if searchTerm?.count ?? 0 > 0 {
             return 1
         }
@@ -152,8 +166,12 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
             return searchedCountries.count
         }
         
+        if countriesSequence == .byPopulation {
+            return countriesByPopulation.count
+        }
+        
         var firstLetter = indexedCountriesFirstLetter[section]
-        if reverseCountries {
+        if countriesSequence == .reverse {
             firstLetter = indexedCountriesFirstLetterReversed[section]
         }
         return indexedCountries[firstLetter]?.count ?? 0
@@ -164,8 +182,12 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
             return nil
         }
         
+        if countriesSequence == .byPopulation {
+            return nil
+        }
+        
         var iterationToUse = indexedCountriesFirstLetter
-        if reverseCountries {
+        if countriesSequence == .reverse {
             iterationToUse = indexedCountriesFirstLetterReversed
         }
         
@@ -182,7 +204,11 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
             return nil
         }
         
-        if reverseCountries {
+        if countriesSequence == .byPopulation {
+            return nil
+        }
+        
+        if countriesSequence == .reverse {
             return String(indexedCountriesFirstLetterReversed[section])
         } else {
             return String(indexedCountriesFirstLetter[section])
@@ -196,8 +222,10 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UISearchBarD
         
         if searchTerm?.count ?? 0 > 0 {
             country = searchedCountries[indexPath.row]
+        } else if countriesSequence == .byPopulation {
+            country = countriesByPopulation[indexPath.row]
         } else {
-            if reverseCountries == false {
+            if countriesSequence == .forward {
                 let firstLetter = indexedCountriesFirstLetter[indexPath.section]
                 country = indexedCountries[firstLetter]?[indexPath.row]
             } else {
