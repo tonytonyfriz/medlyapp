@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Country : Decodable {
+class Country : Codable {
     
     var name: String?
     var alpha2Code: String?
