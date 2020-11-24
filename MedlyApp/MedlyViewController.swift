@@ -56,6 +56,10 @@ class MedlyViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func setCountriesSequence(_ sender: UISegmentedControl){
+        if allCountries.count < 1 {
+            return
+        }
+        
         if sender.selectedSegmentIndex == 0 {
             countriesSequence = .ascending
             if searchTerm?.count ?? 0 > 0 {
