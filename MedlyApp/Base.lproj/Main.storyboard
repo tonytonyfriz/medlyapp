@@ -43,14 +43,14 @@
                                 </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="328-uU-OhH">
-                                <rect key="frame" x="90" y="118" width="234" height="32"/>
+                                <rect key="frame" x="82" y="118" width="250" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="gaJ-s0-ISU"/>
-                                    <constraint firstAttribute="width" constant="234" id="z2M-2F-E2e"/>
+                                    <constraint firstAttribute="width" constant="250" id="z2M-2F-E2e"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Forward"/>
-                                    <segment title="Backward"/>
+                                    <segment title="Ascending"/>
+                                    <segment title="Descending"/>
                                     <segment title="Population"/>
                                 </segments>
                                 <connections>
