@@ -5,7 +5,7 @@
 //  Created by Anthony Frizalone on 11/19/20.
 //
 
-import Foundation
+import UIKit
 
 let COUNTRIES_LAST_SAVE_DATE_DEFAULTS_STRING = "last_countries_save"
 let COUNTRIES_LAST_SAVE_TIME_ELAPSED_DIFFERENCE : Double = 60*60*24
@@ -62,7 +62,8 @@ class CountriesLoader {
             if let error = error {
                 let savedCountries = getSavedCountries()
                 if savedCountries != nil {
-                   success(savedCountries!)
+                    success(savedCountries!)
+                    showOfflineModeAlert()
                 } else {
                     failure(error)
                     print(error)
@@ -74,7 +75,8 @@ class CountriesLoader {
                 print("data wasn't loaded")
                 let savedCountries = getSavedCountries()
                 if savedCountries != nil {
-                   success(savedCountries!)
+                    success(savedCountries!)
+                    showOfflineModeAlert()
                 } else {
                     failure(nil)
                 }
@@ -88,7 +90,8 @@ class CountriesLoader {
                 print("failed to deal with json")
                 let savedCountries = getSavedCountries()
                 if savedCountries != nil {
-                   success(savedCountries!)
+                    success(savedCountries!)
+                    showOfflineModeAlert()
                 } else {
                     failure(nil)
                 }
@@ -132,5 +135,14 @@ class CountriesLoader {
         }
         
         return nil
+    }
+    
+    class func showOfflineModeAlert(){
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Flags Unavailable", message: "You are in offline mode; country flag icons are unavailable.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+            alertController.addAction(action)
+            UIApplication.shared.windows[0].rootViewController!.present(alertController, animated: true)
+        }
     }
 }

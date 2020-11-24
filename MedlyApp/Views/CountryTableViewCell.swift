@@ -108,6 +108,8 @@ class CountryTableViewCell: UITableViewCell {
         textLabel?.frame = CGRect(x: 60, y: 13.0, width: self.frame.width - 80, height: 30.0)
         detailTextLabel?.frame = CGRect(x: 60, y: 35.0, width: self.frame.width - 80, height: 30.0)
         imageView?.frame = CGRect(x: 14.0, y: 32.0/2 + 7.0, width: 32.0, height: 32.0)
+        
+        imageView?.contentMode = .scaleAspectFit
     }
     
 }
